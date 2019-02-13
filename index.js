@@ -39,7 +39,11 @@ var vm = new Vue({
       Vue.delete(this.list, index)
     },
     editItem(item) {
-      this.item = item
+      if (!(item.path && fs.existsSync(item.path))) {
+        item.warn = "文件不存在~?~"
+        return
+      }
+      this.item = JSON.parse(JSON.stringify(item))
       this.item.edit = true
     }
   },
