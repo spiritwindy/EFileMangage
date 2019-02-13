@@ -1,3 +1,6 @@
+/**
+ * @type {typeof import('vue')}
+ */
 let Vue = require("vue/dist/vue") //require("vue")
 require("bootstrap")
 let fs = require("fs")
@@ -40,13 +43,6 @@ var vm = new Vue({
       this.item.edit = true
     }
   },
-  // computed: {
-  //   list: {
-  //     get() {
-  //       return localStorage
-  //     }
-  //   }
-  // },
   watch: {
     list: {
       handler(val) {
