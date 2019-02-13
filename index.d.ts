@@ -1,4 +1,4 @@
 import Vue from "vue"
-declare module "vue/dist/vue" {
-  export =Vue
-}
+// export module "vue/dist/vue" {
+//   export =Vue
+// }

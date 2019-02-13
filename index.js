@@ -23,6 +23,7 @@ var vm = new Vue({
 
     },
     changItem(item) {
+      debugger
       if (!(item.path && fs.existsSync(item.path))) {
         item.warn = "文件不存在~?~"
         return
@@ -32,18 +33,20 @@ var vm = new Vue({
         this.list.push(item)
       } else {
         Vue.set(this.list, item.index, item)
-        // []
       }
     },
     delItem(index) {
       Vue.delete(this.list, index)
     },
-    editItem(item) {
-      if (!(item.path && fs.existsSync(item.path))) {
-        item.warn = "文件不存在~?~"
+    editItem(item, index) {
+      this.item = JSON.parse(JSON.stringify(item))
+      this.item.index = index
+
+      if (!(this.item.path && fs.existsSync(this.item.path))) {
+        this.item.warn = "文件不存在~?~"
         return
       }
-      this.item = JSON.parse(JSON.stringify(item))
+
       this.item.edit = true
     }
   },
