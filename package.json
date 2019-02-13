@@ -2,8 +2,11 @@
   "name": "filemangage",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "dependencies": {},
+  "main": "start.js",
+  "dependencies": {
+    "bootstrap": "^4.3.0",
+    "vue": "^2.6.6"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
