@@ -15,11 +15,13 @@
   <div id="app">
     <p class="red">{{warn}} </p>
     <ul>
-      <li v-for="(obj,index) in list" class="dList">
-        <p > {{obj.path}} </p>
-        <input type="button" value="打开" @click=openPath(obj.path)>
-        <input type="button" value="编辑" @click="editItem(obj,index)">
-        <input type="button" value="删除" @click="delItem(index)">
+      <li v-for="(obj,index) in list" class="dList" @mouseover=activyItem(index)>
+        <p> {{obj.path}} </p>
+        <div v-show="activyIndex==index">
+          <input type="button" value="打开" @click=openPath(obj.path)>
+          <input type="button" value="编辑" @click="editItem(obj,index)">
+          <input type="button" value="删除" @click="delItem(index)">
+        </div>
       </li>
     </ul>
 

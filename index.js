@@ -17,6 +17,7 @@ var vm = new Vue({
         edit: false,
         warn: ""
       },
+      activyIndex: 0,
       child: undefined
     }
   },
@@ -73,6 +74,9 @@ var vm = new Vue({
       //     console.log(stdout, stderr)
       //   }
       // }
+    },
+    activyItem(index) {
+      this.activyIndex = index
     }
   },
   watch: {
