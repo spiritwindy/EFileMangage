@@ -4,26 +4,27 @@
 let Vue = require("vue/dist/vue") //require("vue")
 require("bootstrap")
 let fs = require("fs")
-// let data = localStorage
+let {spawn} = require("child_process")
 var vm = new Vue({
   // el: "#app",
   data() {
     return {
+      warn: "",
       list: JSON.parse(localStorage["list"] || "[]"),
       item: {
         path: "",
         index: undefined,
         edit: false,
         warn: ""
-      }
+      },
+      child: undefined
     }
   },
   methods: {
-    addMenu() {
+    // addMenu() {
 
-    },
+    // },
     changItem(item) {
-      debugger
       if (!(item.path && fs.existsSync(item.path))) {
         item.warn = "文件不存在~?~"
         return
@@ -48,6 +49,30 @@ var vm = new Vue({
       }
 
       this.item.edit = true
+    },
+    openPath(path) {
+
+      this.child = spawn(`explorer.exe`, [path])
+      var bat = this.child
+      bat.stdout.on('data', (data) => {
+        console.log(data.toString());
+      });
+
+      bat.stderr.on('data', (data) => {
+        console.log(data.toString());
+      });
+
+      bat.on('exit', (code) => {
+        // console.log(`Child exited with code ${code}`);
+      });
+      // child_process.
+      // function (err, stdout, stderr) {
+      //   if (err) {
+      //     this.warn = "打开失败"
+      //   } else {
+      //     console.log(stdout, stderr)
+      //   }
+      // }
     }
   },
   watch: {

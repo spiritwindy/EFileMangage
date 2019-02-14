@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
   <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,9 +13,11 @@
 
 <body>
   <div id="app">
+    <p class="red">{{warn}} </p>
     <ul>
-      <li v-for="(obj,index) in list">
-        dd: {{obj.path}}
+      <li v-for="(obj,index) in list" class="dList">
+        <p > {{obj.path}} </p>
+        <input type="button" value="打开" @click=openPath(obj.path)>
         <input type="button" value="编辑" @click="editItem(obj,index)">
         <input type="button" value="删除" @click="delItem(index)">
       </li>
